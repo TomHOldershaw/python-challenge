@@ -20,21 +20,25 @@ with open(poll_path, "r") as poll_csv:
 
 #List of candidates
 candidates_list = list(set(candidates))
-#Define dictionary to hold voting numbers
-for candidate in candidates_list:
-    candidate_votes = {candidate: 0}
-
 #Total votes
 total_votes = len(candidates)
+#Define dictionary to hold voting numbers
+candidate_votes = {"Votes": total_votes}
+#Add candidates to dictionary
+for candidate in candidates_list:
+    candidate_votes[candidate]=0
+
 
 #Votes for each candidate
 #N.B. Results not required by county
 #For each vote, retrieve number of votes held in dictionary and advance by one
-for candidate in candidates:
-    candidate_votes[candidate] = candidate_votes[candidate] + 1
+#for candidate in candidates:
+#    candidate_votes[candidate] = candidate_votes[candidate] + 1
 
 #Calculate results
 
 #Print to terminal
+print(candidates_list)
+print(candidate_votes)
 
 #Print to text file
