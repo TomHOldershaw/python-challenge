@@ -7,6 +7,7 @@ import csv
 #Set empty lists
 months = []
 profloss = []
+profloss_change = []
 
 #Read in file
 data_csv = os.path.join("Pybank", "Resources", "budget_data.csv")
@@ -31,7 +32,9 @@ nummonths = len(months)
 profloss_total = sum(profloss)
 
 #Changes and averages in "Profit/Losses"
-profloss_average = sum(profloss)/len(profloss)
+for i in range(len(profloss)-1):
+    profloss_change[i] = profloss[i+1] - profloss[i]
+profloss_change_average = sum(profloss_change)/len(profloss_change)
 
 #Greatest increase in profits
 profits = [profit for profit in profloss if profit > 0]
@@ -47,8 +50,8 @@ minmonth = months[profloss.index(maxloss)]
 print(f"Total months: {nummonths}")
 print(f"Total: ${profloss_total}")
 print(f"Average Change: ${profloss_average}")
-print(f"Greatest Increase in Profits: {maxmonth} (${maxprofit}")
-print(f"Greatest Decrease in Profits: {minmonth} (${maxloss}")
+print(f"Greatest Increase in Profits: {maxmonth} (${maxprofit})")
+print(f"Greatest Decrease in Profits: {minmonth} (${maxloss})")
 
 #Export to file
 #Open file
