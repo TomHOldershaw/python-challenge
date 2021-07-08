@@ -3,7 +3,6 @@
 #Import dependencies
 import os
 import csv
-from typing import Text
 
 #Set empty lists
 months = []
