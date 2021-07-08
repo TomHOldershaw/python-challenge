@@ -28,17 +28,19 @@ candidate_votes = {"Votes": total_votes}
 for candidate in candidates_list:
     candidate_votes[candidate]=0
 
-
 #Votes for each candidate
 #N.B. Results not required by county
 #For each vote, retrieve number of votes held in dictionary and advance by one
-#for candidate in candidates:
-#    candidate_votes[candidate] = candidate_votes[candidate] + 1
+for candidate in candidates:
+    candidate_votes[candidate] = candidate_votes[candidate] + 1
 
-#Calculate results
+#Calculate percentage
+
 
 #Print to terminal
 print(candidates_list)
 print(candidate_votes)
+for (cand, votes) in sorted(candidate_votes.items(), key=lambda x: x[1]):
+    print(f"{cand}: {votes}")
 
 #Print to text file
