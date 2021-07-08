@@ -40,21 +40,20 @@ winner = sorted_candidates[0]
 
 #write output
 output = "Election Results\n"
-output = output + "--------------------\n"
+output = output + "-----------------------\n"
 output = output + "Total Votes: " + str(total_votes) + "\n"
-output = output + "--------------------\n"
+output = output + "-----------------------\n"
 for (cand, votes) in sorted_candidates:
     output = output + cand +": " + str(round(votes*100/total_votes,4)) + "% (" + str(votes) + ")\n"
-output = output + "--------------------\n"
+output = output + "-----------------------\n"
 #for (cand, votes) in winner:
-#    output = output + "Winner: " + str(cand)
-output = output + "--------------------\n"
+output = output + "Winner: " + winner[0] +"\n"
+output = output + "-----------------------\n"
 
 #Print to terminal
-print(candidates_list)
-print(candidate_votes)
-print(sorted_candidates)
 print(output)
-print(winner)
 
 #Print to text file
+output_path = os.path.join("PyPoll", "analysis", "output.txt")
+with open(output_path, "w") as analysis_file:
+    analysis_file.write(output)
