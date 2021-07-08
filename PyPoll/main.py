@@ -34,13 +34,24 @@ for candidate in candidates_list:
 for candidate in candidates:
     candidate_votes[candidate] = candidate_votes[candidate] + 1
 
-#Calculate percentage
+#Sort by votes
+sorted_candidates = sorted(candidate_votes.items(), key=lambda x: x[1])
 
+#write output
+output = "Election Results\n"
+output = output + "--------------------\n"
+output = output + "Total Votes: " + str(total_votes) + "\n"
+output = output + "--------------------\n"
+for (cand, votes) in sorted_candidates:
+    output = output + cand +": " + str(round(votes/total_votes,4)) + "% (" + str(votes) + ")\n"
+output = output + "--------------------\n"
+#output = output + "Winner: " = sorted_candidates[0]
+output = output + "--------------------\n"
 
 #Print to terminal
 print(candidates_list)
 print(candidate_votes)
-for (cand, votes) in sorted(candidate_votes.items(), key=lambda x: x[1]):
-    print(f"{cand}: {votes}")
+print(sorted_candidates)
+print(output)
 
 #Print to text file
