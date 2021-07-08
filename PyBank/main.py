@@ -3,6 +3,7 @@
 #Import dependencies
 import os
 import csv
+from typing import Text
 
 #Set empty lists
 months = []
@@ -34,7 +35,7 @@ profloss_total = sum(profloss)
 #Changes and averages in "Profit/Losses"
 for i in range(len(profloss)-1):
     profloss_change.append(profloss[i+1] - profloss[i])
-    profloss_change_average = sum(profloss_change)/len(profloss_change)
+profloss_change_average = sum(profloss_change)/len(profloss_change)
 
 #Greatest increase in profits
 profits = [profit for profit in profloss if profit > 0]
@@ -49,11 +50,19 @@ minmonth = months[profloss.index(maxloss)]
 #Print to terminal
 print(f"Total months: {nummonths}")
 print(f"Total: ${profloss_total}")
-print(f"Average Change: ${profloss_change_average}")
+print(f"Average Change: ${round(profloss_change_average,2)}")
 print(f"Greatest Increase in Profits: {maxmonth} (${maxprofit})")
 print(f"Greatest Decrease in Profits: {minmonth} (${maxloss})")
 
 #Export to file
 #Open file
+output_file = os.path.join("PyBank", "analysis", "analysis.txt")
+
+with open(output_file, "w") as analysis_file:
 
 #Export data
+    analysis_file.write("Total months: " + str(nummonths) + "\n")
+    analysis_file.write("Total: $" + str(profloss_total) + "\n")
+    analysis_file.write("Average Change: $" + str(round(profloss_change_average,2)) + "\n")
+    analysis_file.write("Greatest Increase in Profits: " + maxmonth + " ($" + str(maxprofit) + ")\n")
+    analysis_file.write("Greatest Decrease in Profits: " + minmonth + " ($" + str(maxloss) + ")\n")
