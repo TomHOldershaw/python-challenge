@@ -33,8 +33,8 @@ profloss_total = sum(profloss)
 
 #Changes and averages in "Profit/Losses"
 for i in range(len(profloss)-1):
-    profloss_change[i] = profloss[i+1] - profloss[i]
-profloss_change_average = sum(profloss_change)/len(profloss_change)
+    profloss_change.append(profloss[i+1] - profloss[i])
+    profloss_change_average = sum(profloss_change)/len(profloss_change)
 
 #Greatest increase in profits
 profits = [profit for profit in profloss if profit > 0]
@@ -49,7 +49,7 @@ minmonth = months[profloss.index(maxloss)]
 #Print to terminal
 print(f"Total months: {nummonths}")
 print(f"Total: ${profloss_total}")
-print(f"Average Change: ${profloss_average}")
+print(f"Average Change: ${profloss_change_average}")
 print(f"Greatest Increase in Profits: {maxmonth} (${maxprofit})")
 print(f"Greatest Decrease in Profits: {minmonth} (${maxloss})")
 
