@@ -37,16 +37,16 @@ for i in range(len(profloss)-1):
 profloss_change_average = sum(profloss_change)/len(profloss_change)
 
 #Greatest increase in profits
-profits = [profit for profit in profloss if profit > 0]
-maxprofit = max(profits)
+maxprofit = max(profloss)
 maxmonth = months[profloss.index(maxprofit)]
 
 #Greatest decrease in profits
-losses = [loss for loss in profloss if loss <0]
-maxloss = min(losses)
+maxloss = min(profloss)
 minmonth = months[profloss.index(maxloss)]
 
 #Print to terminal
+print("Financial Analysis")
+print("------------------------------")
 print(f"Total months: {nummonths}")
 print(f"Total: ${profloss_total}")
 print(f"Average Change: ${round(profloss_change_average,2)}")
@@ -60,6 +60,8 @@ output_file = os.path.join("PyBank", "analysis", "analysis.txt")
 with open(output_file, "w") as analysis_file:
 
 #Export data
+    analysis_file.write("Financial Analysis\n")
+    analysis_file.write("------------------------------\n")
     analysis_file.write("Total months: " + str(nummonths) + "\n")
     analysis_file.write("Total: $" + str(profloss_total) + "\n")
     analysis_file.write("Average Change: $" + str(round(profloss_change_average,2)) + "\n")

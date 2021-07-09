@@ -3,13 +3,17 @@ import os
 import csv
 
 #Setup lists etc
+#candidates list
 candidates = []
+#Define dictionary to hold voting numbers
+candidate_votes = {}
 
 #Open file and read header
 poll_path = os.path.join("PyPoll", "Resources", "election_data.csv")
 
 with open(poll_path, "r") as poll_csv:
     poll_data = csv.reader(poll_csv, delimiter=",")
+    #read header
     poll_header = next(poll_data)
 
 #Process data
@@ -22,8 +26,7 @@ with open(poll_path, "r") as poll_csv:
 candidates_list = list(set(candidates))
 #Total votes
 total_votes = len(candidates)
-#Define dictionary to hold voting numbers
-candidate_votes = {}
+
 #Add candidates to dictionary
 for candidate in candidates_list:
     candidate_votes[candidate]=0
